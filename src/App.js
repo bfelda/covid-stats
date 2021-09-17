@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, {useState, useEffect } from 'react';
 import './App.css';
+import Search from './components/Search'
+import Map from './components/Map'
 
 function App() {
+  let caseCountryUrl = 'https://covid-19-data.unstatshub.org/datasets/cases-country/api';
+const [caseCountryData, setCaseCountryData] = useState([]);
+const [activeCountry, setActiveCountry] = useState({});
+const [query, setQuery] = useState("");
+const [loading, setLoading] = useState(false);
+
+async function fetchCountryData() {
+  const response = await fetch(caseCountryUrl);
+  return await response.json();
+}
+
+useEffect(() => {
+  fetchCountryData().then(data =>console.log(data));
+}, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Search/>
+      <Map/>
+    </>
   );
 }
 
