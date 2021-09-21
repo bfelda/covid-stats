@@ -8,7 +8,6 @@ export default function Map(props) {
 	const options = {
 		styles: mapStyle,
 		disableDefaultUI: true,
-		zoomControl: true,
 	};
 
 	const [libraries] = useState(["places"]);
@@ -25,7 +24,6 @@ export default function Map(props) {
 
 	useEffect(() => {
 		if (!props.location.OBJECTID) return;
-		console.log(props.location);
 		let newLocation = {
 			lat: props.location.Lat,
 			lng: props.location.Long_,

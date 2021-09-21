@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./assets/App.css";
 import Search from "./components/Search";
 import Map from "./components/Map";
+import Ref from "./components/Ref";
+import Details from "./components/Details";
+import styled from "styled-components";
 
 function App() {
 	let caseCountryUrl =
@@ -15,9 +18,11 @@ function App() {
 	}
 
 	function setInitialData(apiResponse) {
-		let countryData = apiResponse.features.map((feature) => {
-			return feature.attributes;
-		});
+		let countryData = apiResponse.features.map(
+			(feature) => feature.attributes
+		);
+		// let sortedCountryData = countryData.sort((a, b) => a.Deaths > b.Deaths);
+		// console.log(sortedCountryData);
 		setCountryArray(countryData);
 		setActiveCountry(countryData[0]);
 	}
@@ -28,13 +33,27 @@ function App() {
 		});
 	}, []);
 
+	const OverlayContainer = styled.section`
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		display: flex;
+		flex-flow: column;
+		height: 100vh;
+	`;
+
 	return (
 		<>
-			<Search
-				countries={countryArray}
-				setActiveCountry={setActiveCountry}
-			/>
 			<Map location={activeCountry} />
+			<OverlayContainer>
+				<Search
+					countries={countryArray}
+					activeCountry={activeCountry}
+					setActiveCountry={setActiveCountry}
+				/>
+				<Details data={activeCountry} />
+				<Ref countries={countryArray} />
+			</OverlayContainer>
 		</>
 	);
 }
