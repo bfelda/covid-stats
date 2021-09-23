@@ -11,26 +11,18 @@ export default function search(props) {
 	};
 
 	const SearchContainer = styled.section`
-		width 100vw;
-		padding: 20px 0;
 		display: flex;
 		align-items: center;
 		flex: 0 1 auto;
 		justify-content: center;
-		background: rgba(255,255,255,0.3);
-	`;
-
-	const SearchInput = styled.select`
-	font-size: 14px;
-	border: none;
-	appearance: none;
-	border-radius: 3px;
-	padding 12px;
+		padding: 20px 0;
+		background: rgba(255, 255, 255, 0.2);
+		grid-area: search;
 	`;
 
 	return (
 		<SearchContainer>
-			<SearchInput autoComplete="on" onChange={onCountryChange}>
+			<select autoComplete="on" onChange={onCountryChange}>
 				{props.countries.map((country) => (
 					<option
 						selected={props.activeCountry.UID === country.UID}
@@ -39,7 +31,7 @@ export default function search(props) {
 						{country.Country_Region}
 					</option>
 				))}
-			</SearchInput>
+			</select>
 		</SearchContainer>
 	);
 }

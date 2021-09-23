@@ -10,7 +10,12 @@ function App() {
 	let caseCountryUrl =
 		"https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 	const [countryArray, setCountryArray] = useState([]);
-	const [activeCountry, setActiveCountry] = useState({});
+	const [activeCountry, setActiveCountry] = useState({
+		Deaths: 0,
+		Confirmed: 0,
+		Mortality_Rate: 0,
+		Incident_Rate: 0,
+	});
 
 	async function fetchCountryData() {
 		const response = await fetch(caseCountryUrl);
@@ -18,11 +23,10 @@ function App() {
 	}
 
 	function setInitialData(apiResponse) {
+		console.log(apiResponse);
 		let countryData = apiResponse.features.map(
 			(feature) => feature.attributes
 		);
-		// let sortedCountryData = countryData.sort((a, b) => a.Deaths > b.Deaths);
-		// console.log(sortedCountryData);
 		setCountryArray(countryData);
 		setActiveCountry(countryData[0]);
 	}
@@ -35,11 +39,25 @@ function App() {
 
 	const OverlayContainer = styled.section`
 		position: absolute;
+		height: 100vh;
+		width: 100vw;
 		top: 0;
 		z-index: 2;
-		display: flex;
-		flex-flow: column;
-		height: 100vh;
+		display: grid;
+		@media (max-width: 1000px) {
+			grid-template-rows: auto 1fr auto;
+			grid-template-areas:
+				"search"
+				"details"
+				"ref";
+		}
+		@media (min-width: 1000px) {
+			grid-template-columns: 1fr 1.5fr 300px;
+			grid-template-areas:
+				"search mid blank"
+				"details mid blank"
+				"details mid ref";
+		}
 	`;
 
 	return (

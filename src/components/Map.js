@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, useLoadScript, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import mapStyle from "../map_styles/style1";
 
 export default function Map(props) {
@@ -9,8 +9,6 @@ export default function Map(props) {
 		styles: mapStyle,
 		disableDefaultUI: true,
 	};
-
-	const [libraries] = useState(["places"]);
 
 	const mapContainerStyle = {
 		width: "100vw",
@@ -30,17 +28,15 @@ export default function Map(props) {
 			zoom: 5,
 		};
 		setLocation(newLocation);
-		return () => {
-			// cleanup;
-		};
 	}, [props.location]);
 
 	const { isLoaded, loadError } = useLoadScript({
 		googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
-		libraries: libraries,
 	});
+
 	if (loadError) return "Error loading google maps";
 	if (!isLoaded) return "Loading...";
+
 	return (
 		<div>
 			<GoogleMap
