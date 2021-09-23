@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+const SearchContainer = styled.section`
+	display: flex;
+	align-items: center;
+	flex: 0 1 auto;
+	justify-content: center;
+	padding: 20px 0;
+	background: rgba(255, 255, 255, 0.2);
+	grid-area: search;
+`;
+
 export default function search(props) {
 	const onCountryChange = (e) => {
 		let countryObj = props.countries.filter(
@@ -9,16 +19,6 @@ export default function search(props) {
 		console.log(countryObj);
 		props.setActiveCountry(countryObj);
 	};
-
-	const SearchContainer = styled.section`
-		display: flex;
-		align-items: center;
-		flex: 0 1 auto;
-		justify-content: center;
-		padding: 20px 0;
-		background: rgba(255, 255, 255, 0.2);
-		grid-area: search;
-	`;
 
 	return (
 		<SearchContainer>

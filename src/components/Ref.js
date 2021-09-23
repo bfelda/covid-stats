@@ -2,6 +2,36 @@ import React, { useState, useEffect } from "react";
 import CovidRadio from "./CovidRadio";
 import styled from "styled-components";
 
+const RefContainer = styled.section`
+color: white;
+grid-area: ref;
+display: flex;
+@media (max-width:500px) {
+	font-size: .8em;
+	& > div {
+		padding 5px;
+	}
+}
+@media (min-width: 768px) {
+	flex-direction: column;
+	& > div {
+		padding: 15px;
+	}
+}
+@media (max-width: 768px) {
+	flex-direction: row;
+	justify-content: flex-end;
+	& > div {
+		padding 15px 30px;
+	}
+}
+& .optionsContainer {
+	background: black;
+}
+& > div {
+	background: rgba(0, 0, 0, 0.5);
+`;
+
 export default function Ref(props) {
 	const PROPERTIES = {
 		DEATHS: "Deaths",
@@ -19,36 +49,6 @@ export default function Ref(props) {
 	const [activeAggregate, setActiveAggregate] = useState(AGGREGATE.TOTAL);
 
 	const [topTenList, setTopTenList] = useState([]);
-
-	const RefContainer = styled.section`
-	color: white;
-	grid-area: ref;
-	display: flex;
-	@media (min-width: 1000px) {
-		flex-direction: column;
-		& > div {
-			padding: 15px;
-		}
-	}
-	@media (max-width: 1000px) {
-		flex-direction: row;
-		justify-content: flex-end;
-		& > div {
-			padding 15px 30px;
-		}
-	}
-	@media (max-width:500px) {
-		font-size: .8em;
-		& > div {
-			padding 5px;
-		}
-	}
-	& .optionsContainer {
-		background: black;
-	}
-	& > div {
-		background: rgba(0, 0, 0, 0.5);
-	`;
 
 	useEffect(() => {
 		setTopTenList(topTenFactory(sortableData, activeProperty));

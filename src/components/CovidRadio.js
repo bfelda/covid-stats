@@ -22,7 +22,7 @@ export default function CovidRadio(props) {
 		<>
 			{Object.keys(props.options).map((key, index) => {
 				return (
-					<CovidRadioInput>
+					<CovidRadioInput key={key + index}>
 						<input
 							onChange={props.onChange}
 							id={props.options[key] + index}
@@ -34,7 +34,7 @@ export default function CovidRadio(props) {
 							value={props.options[key]}
 							name={props.name}
 						/>{" "}
-						<label for={props.options[key] + index}>
+						<label htmlFor={props.options[key] + index}>
 							{props.options[key]}
 						</label>
 					</CovidRadioInput>

@@ -23,7 +23,6 @@ function App() {
 	}
 
 	function setInitialData(apiResponse) {
-		console.log(apiResponse);
 		let countryData = apiResponse.features.map(
 			(feature) => feature.attributes
 		);
@@ -44,15 +43,15 @@ function App() {
 		top: 0;
 		z-index: 2;
 		display: grid;
-		@media (max-width: 1000px) {
+		@media (max-width: 768px) {
 			grid-template-rows: auto 1fr auto;
 			grid-template-areas:
 				"search"
 				"details"
 				"ref";
 		}
-		@media (min-width: 1000px) {
-			grid-template-columns: 1fr 1.5fr 300px;
+		@media (min-width: 768px) {
+			grid-template-columns: 350px auto 300px;
 			grid-template-areas:
 				"search mid blank"
 				"details mid blank"
