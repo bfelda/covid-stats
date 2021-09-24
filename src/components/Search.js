@@ -9,6 +9,14 @@ const SearchContainer = styled.section`
 	padding: 20px 0;
 	background: rgba(255, 255, 255, 0.2);
 	grid-area: search;
+	& > select {
+		font-size: 14px;
+		border: none;
+		appearance: none;
+		border-radius: 3px;
+		padding: 12px;
+		border: solid #c94b27 3px;
+	}
 `;
 
 export default function search(props) {
