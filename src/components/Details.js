@@ -9,11 +9,11 @@ const DetailsContainer = styled.section`
 	grid-area: details;
 	text-shadow: 2px 2px #000000;
 	display: flex;
-	@media (max-width: 768px) {
+	@media (max-width: 868px) {
 		align-items: center;
 		padding-left: 40px;
 	}
-	@media (min-width: 768px) {
+	@media (min-width: 868px) {
 		justify-content: center;
 		background: rgba(255, 255, 255, 0.2);
 		font-size: 1.3em;

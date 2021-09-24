@@ -8,6 +8,7 @@ export default function Map(props) {
 	const options = {
 		styles: mapStyle,
 		disableDefaultUI: true,
+		backgroundColor: "#24282b",
 	};
 
 	const mapContainerStyle = {

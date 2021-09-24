@@ -43,19 +43,26 @@ function App() {
 		top: 0;
 		z-index: 2;
 		display: grid;
-		@media (max-width: 768px) {
+		@media (max-width: 868px) {
 			grid-template-rows: auto 1fr auto;
 			grid-template-areas:
 				"search"
 				"details"
 				"ref";
 		}
-		@media (min-width: 768px) {
+		@media (min-width: 868px) {
 			grid-template-columns: 350px auto 300px;
 			grid-template-areas:
 				"search mid blank"
 				"details mid blank"
 				"details mid ref";
+		}
+		@media (min-width: 1450px) {
+			grid-template-columns: auto 350px 800px 300px;
+			grid-template-areas:
+				"left search mid blank"
+				"left details mid blank"
+				"left details mid ref";
 		}
 	`;
 

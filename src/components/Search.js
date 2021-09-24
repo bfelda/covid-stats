@@ -16,7 +16,6 @@ export default function search(props) {
 		let countryObj = props.countries.filter(
 			(c) => c.Country_Region === e.target.value
 		)[0];
-		console.log(countryObj);
 		props.setActiveCountry(countryObj);
 	};
 

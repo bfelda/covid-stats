@@ -6,19 +6,22 @@ const RefContainer = styled.section`
 color: white;
 grid-area: ref;
 display: flex;
+li {
+	line-height: 1.7;
+}
 @media (max-width:500px) {
 	font-size: .8em;
 	& > div {
 		padding 5px;
 	}
 }
-@media (min-width: 768px) {
+@media (min-width: 868px) {
 	flex-direction: column;
 	& > div {
 		padding: 15px;
 	}
 }
-@media (max-width: 768px) {
+@media (max-width: 868px) {
 	flex-direction: row;
 	justify-content: flex-end;
 	& > div {

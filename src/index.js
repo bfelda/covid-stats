@@ -21,4 +21,5 @@ reportWebVitals(({ id, name, value }) =>
 		value: Math.round(name === "CLS" ? value * 1000 : value),
 	})
 );
-// reportWebVitals(console.log);
+
+//https://analytics.google.com/analytics/web/?authuser=0#/p287344172/reports/reportinghub
