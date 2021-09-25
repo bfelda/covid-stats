@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+/*
+props:
+	countries, full list of countries and data
+	activeCountry, the selected active country
+	setActiveCountry, function taking a country
+*/
+
 const SearchContainer = styled.section`
 	display: flex;
 	align-items: center;
@@ -19,7 +26,7 @@ const SearchContainer = styled.section`
 	}
 `;
 
-export default function search(props) {
+export default function Search(props) {
 	const onCountryChange = (e) => {
 		let countryObj = props.countries.filter(
 			(c) => c.Country_Region === e.target.value
@@ -30,10 +37,10 @@ export default function search(props) {
 	return (
 		<SearchContainer>
 			<select autoComplete="on" onChange={onCountryChange}>
-				{props.countries.map((country) => (
+				{props.countries.map((country, index) => (
 					<option
+						key={index}
 						selected={props.activeCountry.UID === country.UID}
-						key={country.UID}
 					>
 						{country.Country_Region}
 					</option>

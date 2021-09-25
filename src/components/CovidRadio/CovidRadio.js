@@ -1,5 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { Theme } from "../../assets/Theme";
+/*
+props:
+	active, the active radio button property
+	options, object dict of radio button options
+	onChange, functon when radio group is changed
+	name, common name for radio inputs to group
+*/
 
 const CovidRadioInput = styled.div`
 	padding: 5px;
@@ -18,16 +26,16 @@ const CovidRadioInput = styled.div`
 			border-radius: 50%;
 			border-style: solid;
 			border-width: 0.1rem;
-			border-color: #c94b27;
+			border-color: ${Theme.primary};
 		}
 		& > input[type="radio"]:checked + *::before {
 			background: radial-gradient(
-				#c94b27 0%,
-				#c94b27 40%,
+				${Theme.primary} 0%,
+				${Theme.primary} 40%,
 				transparent 50%,
 				transparent
 			);
-			border-color: #c94b27;
+			border-color: ${Theme.primary};
 		}
 	}
 `;

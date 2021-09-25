@@ -11,7 +11,7 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById("root")
 );
-ReactGA.initialize("G-XXDP3NJT3K");
+ReactGA.initialize(process.env.REACT_APP_GA_KEY);
 reportWebVitals(({ id, name, value }) =>
 	ReactGA.event({
 		action: name,
@@ -21,5 +21,3 @@ reportWebVitals(({ id, name, value }) =>
 		value: Math.round(name === "CLS" ? value * 1000 : value),
 	})
 );
-
-//https://analytics.google.com/analytics/web/?authuser=0#/p287344172/reports/reportinghub

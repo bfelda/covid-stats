@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-import mapStyle from "../map_styles/style1";
+import mapStyle from "../../assets/map_styles/style1";
+import { Theme } from "../../assets/Theme";
+
+/*
+props:
+	location, the active selected country
+*/
 
 export default function Map(props) {
 	const [location, setLocation] = useState({});
@@ -8,7 +14,7 @@ export default function Map(props) {
 	const options = {
 		styles: mapStyle,
 		disableDefaultUI: true,
-		backgroundColor: "#24282b",
+		backgroundColor: Theme.secondary,
 	};
 
 	const mapContainerStyle = {

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-import CovidRadio from "./CovidRadio";
+import CovidRadio from "../CovidRadio/CovidRadio";
 import styled from "styled-components";
+
+/*
+props:
+	countries, full list of countries and data
+*/
 
 const RefContainer = styled.section`
 color: white;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./assets/App.css";
-import Search from "./components/Search";
-import Map from "./components/Map";
-import Ref from "./components/Ref";
-import Details from "./components/Details";
+import Search from "./components/Search/Search";
+import Map from "./components/Map/Map";
+import Ref from "./components/Ref/Ref";
+import Details from "./components/Details/Details";
 import styled from "styled-components";
 
 function App() {

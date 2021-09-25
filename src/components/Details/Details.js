@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+/*
+props:
+	data, full list of countries and data
+*/
+
 const DetailsContainer = styled.section`
 	color: white;
 	font-weight: 500;
