@@ -27,6 +27,15 @@
 		<title>Covid-Stats</title>
 	</head>
 	<body>
+		<form name="notify" netlify netlify-honeypot="bot-field" hidden>
+			<input type="hidden" name="form-name" value="contact" />
+			<input
+				onChange={handlePhoneChange}
+				type="text"
+				placeholder="phone #"
+			></input>
+		</form>
+
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
 		<!--
