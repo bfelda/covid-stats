@@ -78,7 +78,7 @@ export default function Details(props) {
 						"en-us"
 					)}
 				</span>
-				<form name="notify" data-netlify="true" method="POST">
+				<form form-name="notify" data-netlify="true" method="POST">
 					<input
 						onChange={handlePhoneChange}
 						type="text"
