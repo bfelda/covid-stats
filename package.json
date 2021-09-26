@@ -27,6 +27,7 @@
 		"eject": "react-scripts eject",
 		"build": "react-scripts build",
 		"lambda-build": "netlify-lambda build functions",
+		"build-all": "npm run lambda-build && npm run build",
 		"serve": "npm run lambda-build && npm run start"
 	},
 	"jest": {
