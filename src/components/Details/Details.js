@@ -34,15 +34,19 @@ export default function Details(props) {
 	const [phone, setPhone] = useState("");
 
 	const sendSMS = async (e) => {
+		let phoneData = {
+			...props.data,
+			phoneNum: phone,
+		};
 		e.preventDefault();
 		try {
 			const response = await fetch("/", {
-				method: "post",
+				method: "POST",
 				headers: {
 					"Content-type":
 						"application/x-www-form-urlencoded; charset=UTF-8",
 				},
-				body: phone,
+				body: encodeURI({ "form-name": "notify", phoneData }),
 			});
 			if (response.status === 200) {
 				console.log("success!!!!!!!!!!!!!!!!!");
@@ -78,7 +82,7 @@ export default function Details(props) {
 						"en-us"
 					)}
 				</span>
-				<form form-name="notify" data-netlify="true" method="POST">
+				<form name="notify" data-netlify="true" method="POST">
 					<input
 						onChange={handlePhoneChange}
 						type="text"
