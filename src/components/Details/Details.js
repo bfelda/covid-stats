@@ -33,6 +33,17 @@ const DetailsContainer = styled.section`
 export default function Details(props) {
 	const [phone, setPhone] = useState("");
 
+	const encode = (data) => {
+		return Object.keys(data)
+			.map(
+				(key) =>
+					encodeURIComponent(key) +
+					"=" +
+					encodeURIComponent(data[key])
+			)
+			.join("&");
+	};
+
 	const sendSMS = async (e) => {
 		e.preventDefault();
 		let phoneData = {
