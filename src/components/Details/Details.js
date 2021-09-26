@@ -57,7 +57,7 @@ export default function Details(props) {
 					"Content-type":
 						"application/x-www-form-urlencoded; charset=UTF-8",
 				},
-				body: encode({ "form-name": "notify", phoneData }),
+				body: encode({ "form-name": "notify", ...phoneData }),
 			});
 			if (response.status === 200) {
 				console.log("success!!!!!!!!!!!!!!!!!");
