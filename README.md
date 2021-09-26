@@ -1,18 +1,14 @@
-# Getting Started with Create React App
+# Getting started with the Covid Data Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows you to search by country to view Covid-19 statistics for that country, as well as view a top 10 reference list covering statistics of world wide Covid-19 rates.
 
-## Available Scripts
+## Viewing a countries statistics
 
-In the project directory, you can run:
+To view a countries statistics, click on the text input and start typing your selected countries name. When you see it appear, hit enter and your country will load. You will notice the map in the background changes to the country you selected, and the data on the map reflects that country you selected.
 
-### `npm start`
+## Manipulating the reference table
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The lower and right section of the website
 
 ### `npm test`
 
