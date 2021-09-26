@@ -5,9 +5,9 @@ import Details from "./Details";
 import { ActiveCountry } from "../../../tools/MockData";
 
 describe("initial state", () => {
-	it("should render the details for the active country", () => {
-		const tree = renderer.create(<Details data={ActiveCountry} />);
-		expect(tree).toMatchInlineSnapshot(`
+  it("should render the details for the active country", () => {
+    const tree = renderer.create(<Details data={ActiveCountry} />);
+    expect(tree).toMatchInlineSnapshot(`
       <section
         className="sc-bdfBQB iHsLyp"
       >
@@ -25,7 +25,7 @@ describe("initial state", () => {
               154,960
             </li>
             <li>
-              Mortaliy Rate: 
+              Mortality Rate: 
               4.65
             </li>
             <li>
@@ -40,5 +40,5 @@ describe("initial state", () => {
         </div>
       </section>
     `);
-	});
+  });
 });

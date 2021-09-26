@@ -7,19 +7,6 @@ import Ref from "./Ref";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockOnSetActiveCountry = jest.fn();
-
-const PROPERTIES = {
-	DEATHS: "Deaths",
-	CONFIRMED: "Confirmed",
-	RECOVERED: "Recovered",
-};
-
-const AGGREGATE = {
-	TOTAL: "Total",
-	DAILY: "Daily",
-};
-
 const renderReferenceElement = (args) => {
 	const defaultProps = {
 		countries: [],

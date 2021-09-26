@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 /*
 props:
-	data, full list of countries and data
+	data, active country data
 */
 
 const DetailsContainer = styled.section`
@@ -40,7 +40,7 @@ export default function Details(props) {
 					<li>Deaths: {props.data.Deaths.toLocaleString()}</li>
 					<li>Confirmed: {props.data.Confirmed.toLocaleString()}</li>
 					<li>
-						Mortaliy Rate: {props.data.Mortality_Rate.toFixed(2)}
+						Mortality Rate: {props.data.Mortality_Rate.toFixed(2)}
 					</li>
 					<li>
 						Incident Rate: {props.data.Incident_Rate.toFixed(2)}
