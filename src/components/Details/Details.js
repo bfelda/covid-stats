@@ -5,7 +5,6 @@ import styled from "styled-components";
 props:
 	data, active country data
 */
-
 const DetailsContainer = styled.section`
 	color: white;
 	font-weight: 500;
@@ -32,6 +31,33 @@ const DetailsContainer = styled.section`
 `;
 
 export default function Details(props) {
+	const [phone, setPhone] = useState("");
+
+	const sendSMS = async (e) => {
+		e.preventDefault();
+		try {
+			const response = await fetch("/", {
+				method: "post",
+				headers: {
+					"Content-type":
+						"application/x-www-form-urlencoded; charset=UTF-8",
+				},
+				body: phone,
+			});
+			if (response.status === 200) {
+				console.log("success!!!!!!!!!!!!!!!!!");
+			} else {
+				console.log("Error!!!!!!!!!!!!!!!!!!!");
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const handlePhoneChange = (e) => {
+		setPhone(e.target.value);
+	};
+
 	return (
 		<DetailsContainer>
 			<div>
@@ -52,6 +78,14 @@ export default function Details(props) {
 						"en-us"
 					)}
 				</span>
+				<form data-netlify="true" onSubmit={sendSMS}>
+					<input
+						onChange={handlePhoneChange}
+						type="text"
+						placeholder="phone #"
+					></input>
+					<button type="submit">Send</button>
+				</form>
 			</div>
 		</DetailsContainer>
 	);
