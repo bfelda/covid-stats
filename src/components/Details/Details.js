@@ -47,7 +47,12 @@ export default function Details(props) {
 	const sendSMS = async (e) => {
 		e.preventDefault();
 		let phoneData = {
-			...props.data,
+			Last_Update: new Date(props.data.Last_Update).toLocaleDateString(
+				"en-us"
+			),
+			Country_Region: props.Country_Region,
+			Deaths: props.Deaths.toLocaleString(),
+			Confirmed: props.Confirmed.toLocaleString(),
 			phone: phone,
 		};
 		try {

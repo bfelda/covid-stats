@@ -6,7 +6,7 @@ const client = require("twilio")(
 	process.env.TWILIO_AUTH_TOKEN
 );
 
-exports.handler = function (event, context, callback) {
+exports.handler = function (event) {
 	var data = JSON.parse(event.body).payload.data;
 	return client.messages.create({
 		from: process.env.BOT_NUMBER,
@@ -14,13 +14,13 @@ exports.handler = function (event, context, callback) {
 		body:
 			data.Country_Region +
 			" Covid-19 total confirmed data as of " +
-			new Date(data.Last_Update).toLocaleDateString("en-us") +
+			data.Last_Update +
 			".  " +
 			data.Country_Region +
 			" has " +
-			data.Confirmed.toLocaleDateString() +
+			data.Confirmed +
 			" confirmed cases, and " +
-			data.Deaths.toLocaleDateString() +
+			data.Deaths +
 			" Deaths",
 	});
 };
