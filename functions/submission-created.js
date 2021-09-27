@@ -15,13 +15,13 @@ exports.handler = function (event, context, callback) {
 		body:
 			data.Country_Region +
 			" Covid-19 total confirmed data as of " +
-			data.Last_Update +
+			new Date(props.data.Last_Update).toLocaleDateString("en-us") +
 			".  " +
 			data.Country_Region +
 			" has " +
-			data.Confirmed +
+			data.Confirmed.toLocaleDateString() +
 			" confirmed cases, and " +
-			data.Deaths +
+			data.Deaths.toLocaleDateString() +
 			" Deaths",
 	});
 
