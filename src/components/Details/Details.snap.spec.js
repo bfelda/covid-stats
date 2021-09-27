@@ -9,7 +9,7 @@ describe("initial state", () => {
     const tree = renderer.create(<Details data={ActiveCountry} />);
     expect(tree).toMatchInlineSnapshot(`
       <section
-        className="sc-bdfBQB iHsLyp"
+        className="sc-gsTEea jImgsN"
       >
         <div>
           <h2>
@@ -34,9 +34,20 @@ describe("initial state", () => {
             </li>
           </ul>
           <span>
-            Last Updated
+            Last Updated:
+             
             9/24/2021
           </span>
+          <div
+            className="sc-bdfBQB iagtlW"
+          >
+            <hr />
+            <button
+              onClick={[Function]}
+            >
+              Share to my Phone
+            </button>
+          </div>
         </div>
       </section>
     `);

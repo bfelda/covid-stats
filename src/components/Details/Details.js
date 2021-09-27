@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import SMSForm from "../SMSForm/SMSForm";
 
 /*
 props:
@@ -31,53 +32,6 @@ const DetailsContainer = styled.section`
 `;
 
 export default function Details(props) {
-	const [phone, setPhone] = useState("");
-
-	const encode = (data) => {
-		return Object.keys(data)
-			.map(
-				(key) =>
-					encodeURIComponent(key) +
-					"=" +
-					encodeURIComponent(data[key])
-			)
-			.join("&");
-	};
-
-	const sendSMS = async (e) => {
-		e.preventDefault();
-		let phoneData = {
-			Last_Update: new Date(props.data.Last_Update).toLocaleDateString(
-				"en-us"
-			),
-			Country_Region: props.data.Country_Region,
-			Deaths: props.data.Deaths.toLocaleString(),
-			Confirmed: props.data.Confirmed.toLocaleString(),
-			phone: phone,
-		};
-		try {
-			const response = await fetch("/", {
-				method: "POST",
-				headers: {
-					"Content-type":
-						"application/x-www-form-urlencoded; charset=UTF-8",
-				},
-				body: encode({ "form-name": "notify", ...phoneData }),
-			});
-			if (response.status === 200) {
-				console.log("success!!!!!!!!!!!!!!!!!");
-			} else {
-				console.log("Error!!!!!!!!!!!!!!!!!!!");
-			}
-		} catch (e) {
-			console.error(e);
-		}
-	};
-
-	const handlePhoneChange = (e) => {
-		setPhone(e.target.value);
-	};
-
 	return (
 		<DetailsContainer>
 			<div>
@@ -93,21 +47,12 @@ export default function Details(props) {
 					</li>
 				</ul>
 				<span>
-					Last Updated
+					Last Updated:{" "}
 					{new Date(props.data.Last_Update).toLocaleDateString(
 						"en-us"
 					)}
 				</span>
-				<form onSubmit={sendSMS} name="notify">
-					<input type="hidden" name="form-name" value="contact" />
-					<input
-						onChange={handlePhoneChange}
-						type="text"
-						placeholder="phone #"
-						name="phone"
-					></input>
-					<button type="submit">Send</button>
-				</form>
+				<SMSForm data={props.data} />
 			</div>
 		</DetailsContainer>
 	);
