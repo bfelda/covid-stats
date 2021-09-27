@@ -7,7 +7,12 @@ const client = require("twilio")(
 );
 
 exports.handler = function (event, context, callback) {
-	console.log(JSON.parse(event.body));
+	console.log(JSON.parse(event.body).payload);
+	return client.messages.create({
+		from: process.env.BOT_NUMBER,
+		to: "2622242735",
+		body: process.env.BOT_MESSAGE,
+	});
 	// Promise.all(
 	// 	// split the string of several messages into single numbers
 	// 	// send message to each of them
