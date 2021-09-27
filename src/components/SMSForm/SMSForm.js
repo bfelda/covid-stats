@@ -55,6 +55,7 @@ export default function SMSForm(props) {
 	const sendSMS = async (e) => {
 		e.preventDefault();
 		setSmsStatus(STATUS.SENDING);
+		setVisible(true);
 		let phoneData = {
 			Last_Update: new Date(props.data.Last_Update).toLocaleDateString(
 				"en-us"
@@ -77,11 +78,12 @@ export default function SMSForm(props) {
 				setSmsStatus(STATUS.SUCCESS);
 				setTimeout(() => {
 					setSmsStatus(STATUS.NORMAL);
-					setVisible(true);
 				}, 3000);
 			} else {
-				setSmsStatus(STATUS.NORMAL);
-				setVisible(true);
+				setSmsStatus(STATUS.ERROR);
+				setTimeout(() => {
+					setSmsStatus(STATUS.NORMAL);
+				}, 3000);
 			}
 		} catch (e) {
 			console.error(e);
@@ -96,7 +98,13 @@ export default function SMSForm(props) {
 			<hr />
 			{visible ? (
 				<button onClick={() => setVisible(false)}>
-					Share to my Phone
+					{smsStatus === STATUS.NORMAL
+						? "Share to my Phone"
+						: smsStatus === STATUS.SENDING
+						? "Sending..."
+						: smsStatus === STATUS.ERROR
+						? "Hmm, Try Again."
+						: "Message Sent!"}
 				</button>
 			) : (
 				<form onSubmit={sendSMS} name="notify">
@@ -111,7 +119,7 @@ export default function SMSForm(props) {
 						disabled={smsStatus === STATUS.SENDING || phone === ""}
 						type="submit"
 					>
-						{STATUS.NORMAL ? "Send" : "Sending..."}
+						Send
 					</button>
 				</form>
 			)}
