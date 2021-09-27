@@ -48,7 +48,7 @@ export default function Details(props) {
 		e.preventDefault();
 		let phoneData = {
 			...props.data,
-			phoneNum: phone,
+			phone: phone,
 		};
 		try {
 			const response = await fetch("/", {
@@ -94,10 +94,12 @@ export default function Details(props) {
 					)}
 				</span>
 				<form onSubmit={sendSMS} name="notify">
+					<input type="hidden" name="form-name" value="contact" />
 					<input
 						onChange={handlePhoneChange}
 						type="text"
 						placeholder="phone #"
+						name="phone"
 					></input>
 					<button type="submit">Send</button>
 				</form>
