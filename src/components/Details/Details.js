@@ -50,9 +50,9 @@ export default function Details(props) {
 			Last_Update: new Date(props.data.Last_Update).toLocaleDateString(
 				"en-us"
 			),
-			Country_Region: props.Country_Region,
-			Deaths: props.Deaths.toLocaleString(),
-			Confirmed: props.Confirmed.toLocaleString(),
+			Country_Region: props.data.Country_Region,
+			Deaths: props.data.Deaths.toLocaleString(),
+			Confirmed: props.data.Confirmed.toLocaleString(),
 			phone: phone,
 		};
 		try {
