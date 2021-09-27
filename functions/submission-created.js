@@ -11,9 +11,20 @@ exports.handler = function (event, context, callback) {
 	console.log(data);
 	return client.messages.create({
 		from: process.env.BOT_NUMBER,
-		to: "2622242735",
-		body: "Deaths: " + data.Deaths,
+		to: data.phone,
+		body:
+			data.Country_Region +
+			" Covid-19 total confirmed data as of " +
+			data.Last_Update +
+			".  " +
+			data.Country_Region +
+			" has " +
+			data.Confirmed +
+			" confirmed cases, and " +
+			data.Deaths +
+			" Deaths",
 	});
+
 	// Promise.all(
 	// 	// split the string of several messages into single numbers
 	// 	// send message to each of them
