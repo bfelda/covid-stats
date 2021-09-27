@@ -93,7 +93,7 @@ export default function Details(props) {
 						"en-us"
 					)}
 				</span>
-				<form onSubmit={sendSMS}>
+				<form onSubmit={sendSMS} name="notify">
 					<input
 						onChange={handlePhoneChange}
 						type="text"
