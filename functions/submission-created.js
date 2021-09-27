@@ -8,14 +8,13 @@ const client = require("twilio")(
 
 exports.handler = function (event, context, callback) {
 	var data = JSON.parse(event.body).payload.data;
-	console.log(data);
 	return client.messages.create({
 		from: process.env.BOT_NUMBER,
 		to: data.phone,
 		body:
 			data.Country_Region +
 			" Covid-19 total confirmed data as of " +
-			new Date(props.data.Last_Update).toLocaleDateString("en-us") +
+			new Date(data.Last_Update).toLocaleDateString("en-us") +
 			".  " +
 			data.Country_Region +
 			" has " +
@@ -24,21 +23,4 @@ exports.handler = function (event, context, callback) {
 			data.Deaths.toLocaleDateString() +
 			" Deaths",
 	});
-
-	// Promise.all(
-	// 	// split the string of several messages into single numbers
-	// 	// send message to each of them
-	// 	event..split(";").map((num) => {
-	// 		return client.messages.create({
-	// 			from: process.env.BOT_NUMBER,
-	// 			to: num,
-	// 			body: process.env.BOT_MESSAGE,
-	// 		});
-	// 	})
-	// )
-	// 	.then(() => callback(null, { statusCode: 200, body: "Created" }))
-	// 	.catch((e) => {
-	// 		console.log(e);
-	// 		callback(e);
-	// 	});
 };
