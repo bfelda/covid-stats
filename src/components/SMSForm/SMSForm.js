@@ -27,6 +27,9 @@ const SMSInputContainer = styled.div`
 		& :disabled {
 			cursor: not-allowed;
 		}
+		& :invalid {
+			color: red;
+		}
 	}
 `;
 
@@ -114,6 +117,7 @@ export default function SMSForm(props) {
 						type="tel"
 						placeholder="phone #"
 						name="phone"
+						required
 					/>
 					<button
 						disabled={smsStatus === STATUS.SENDING || phone === ""}
